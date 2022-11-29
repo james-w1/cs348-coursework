@@ -3,6 +3,7 @@
 ### What is This?
 This is a simple forum-like website made using the Laravel framework for my CS348 Coursework. It has basic forum features such as user accounts, posts and replies.
 ### ToDo:
+- [ ] Refactor to use Route Model Binding
 - [ ] Make Nice CSS & HTML
 - [ ] Fix Site Layout & Navigation
 #### View:

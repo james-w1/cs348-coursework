@@ -7,8 +7,8 @@
     <p> {{ $post->body }} </p>
     <hr>
 
-    <p>replies:</p>
     <div class="container">
+    <p>replies:</p>
     @foreach($replies as $reply)
         <div style="border: 2px solid black;">
             <p>{{ $reply->body }} - {{ $post->created_at }}</p>
