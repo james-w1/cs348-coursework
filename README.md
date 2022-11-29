@@ -5,11 +5,11 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 ### ToDo:
 - [ ] Make Nice CSS & HTML
 - [ ] Fix Site Layout & Navigation
-View:
+#### View:
 - [x] SubFourms
 - [x] Posts
 - [x] Replies
 - [ ] User Accounts
-Create:
+#### Create:
 - [ ] Posts
 - [ ] Replies to Existing Posts
