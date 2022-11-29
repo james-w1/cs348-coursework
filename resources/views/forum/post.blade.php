@@ -1,17 +1,22 @@
 @extends('layouts.app')
 
-@section('title', '- ' . $post->name)
+@section('title', '- post: ' . $post->title)
 
 @section('content')
-    <p> {{ $post->name }} </p>
+    <p> {{ $post->title }} </p>
     <p> {{ $post->body }} </p>
     <hr>
 
     <p>replies:</p>
+    <div class="container">
     @foreach($replies as $reply)
-        <p>{{ $reply->body }} - {{ $post->created_at }}</p>
-        <hr>
+        <div style="border: 2px solid black;">
+            <p>{{ $reply->body }} - {{ $post->created_at }}</p>
+        </div>
     @endforeach
+    </div>
+
+    {{ $replies->links() }}
 
     <a href="{{ route('forum.show', ['id' => $subForum->id]) }}">back</a>
 

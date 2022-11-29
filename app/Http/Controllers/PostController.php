@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SubForum;
 use App\Models\Post;
+use App\Models\Reply;
 
 class PostController extends Controller
 {
@@ -49,8 +50,9 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        $subForum = SubForum::findOrFail($post->subForumId());
-        return view('forum.post', ['subForum'=>$subForum, 'post'=>$post]);
+        $replies = Reply::where('post_id', '=', $post->id)->paginate(10);
+        $subForum = SubForum::findOrFail($post->subForum->id);
+        return view('forum.post', ['subForum'=>$subForum, 'post'=>$post, 'replies'=>$replies]);
     }
 
     /**
