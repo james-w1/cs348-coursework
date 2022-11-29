@@ -50,7 +50,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        $replies = Reply::where('post_id', '=', $post->id)->paginate(10);
+        $replies = Reply::where('post_id', '=', $post->id)->paginate(7);
         $subForum = SubForum::findOrFail($post->subForum->id);
         return view('forum.post', ['subForum'=>$subForum, 'post'=>$post, 'replies'=>$replies]);
     }

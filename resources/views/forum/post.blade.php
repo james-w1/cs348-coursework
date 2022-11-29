@@ -10,8 +10,9 @@
     <div class="container">
     <p>replies:</p>
     @foreach($replies as $reply)
-        <div style="border: 2px solid black;">
-            <p>{{ $reply->body }} - {{ $post->created_at }}</p>
+        <div style="padding: 2px; border: 2px solid black;">
+            <p>{{ $reply->body }}</p>
+            <p style="font-size: 9px;">Posted On: {{ $post->created_at }}</p>
         </div>
     @endforeach
     </div>

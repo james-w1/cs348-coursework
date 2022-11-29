@@ -18,7 +18,7 @@ class ReplyFactory extends Factory
     public function definition()
     {
         return [
-            'body' => Fake()->sentence(6),
+            'body' => Fake()->sentence(20),
             'user_id' => User::inRandomOrder()->first()->id,
         ];
     }

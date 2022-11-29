@@ -4,16 +4,15 @@
 
 @section('content')
 
-    <p>postcount: {{ $posts->count() }}</p>
+    <a href="">Create Post</a>
  
-    <p>Posts:</p>
     <ul>
     @foreach($posts as $post)
         <li>
             <a href="{{ route('post.show', ['id' => $subForum->id, 'pid' => $post->id]) }}">
                 {{ $post->title }}
             </a>
-               - {{ $post->body }} - {{ $post->created_at }}
+               - {{ Str::limit($post->body, 30) }} - {{ $post->created_at }}
         </li>
     @endforeach
     </ul>
