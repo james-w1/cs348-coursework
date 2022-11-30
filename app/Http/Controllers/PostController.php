@@ -47,11 +47,11 @@ class PostController extends Controller
      * @param  int  $pid
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $pid)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::findOrFail($pid);
         $replies = Reply::where('post_id', '=', $post->id)->paginate(7);
-        $subForum = SubForum::findOrFail($post->subForum->id);
+        $subForum = SubForum::findOrFail($id);
         return view('forum.post', ['subForum'=>$subForum, 'post'=>$post, 'replies'=>$replies]);
     }
 

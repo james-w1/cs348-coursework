@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '- post: ' . $post->title)
+@section('title', '- forum:' . $subForum->name . ' post: ' . $post->title)
 
 @section('content')
     <p> {{ $post->title }} </p>

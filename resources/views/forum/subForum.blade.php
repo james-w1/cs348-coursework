@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <a href="">Create Post</a>
+    <a href="{{ route('forum.create', ['id' => $subForum->id]) }}">Create Post</a>
     
     <ul>
     @foreach($posts as $post)

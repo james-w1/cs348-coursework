@@ -19,6 +19,10 @@ Route::get('/', [MainController::class, 'index'])->name('forum.index');
 
 Route::get('/{id}', [MainController::class, 'show'])->name('forum.show');
 
+Route::post('/{id}', [MainController::class, 'store'])->name('forum.store');
+
+Route::get('/{id}/create', [MainController::class, 'create'])->name('forum.create');
+
 Route::get('/{id}/{pid}', [PostController::class, 'show'])->name('post.show');
 
 

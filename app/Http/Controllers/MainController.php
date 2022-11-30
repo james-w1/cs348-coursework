@@ -24,9 +24,10 @@ class MainController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $subForum = SubForum::findOrFail($id);
+        return view('forum.createPost', ['subForum'=>$subForum]);
     }
 
     /**
@@ -38,6 +39,22 @@ class MainController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'subForum' => 'required',
+            'userID' => 'required',
+        ]);
+
+        $p = new Post;
+        $p->title = $validatedData['title'];
+        $p->body = $validatedData['body'];
+        $p->sub_forum_id = $validatedData['subForum'];
+        $p->user_id = $validatedData['userID'];
+        $p->save();
+
+        session()->flash('message', 'Post was created');
+        return redirect()->route('forum.show', ['id'=>$validatedData['subForum']]);
     }
 
     /**
