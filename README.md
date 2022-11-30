@@ -12,5 +12,5 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [x] Replies
 - [ ] User Accounts
 #### Create:
-- [ ] Posts
-- [ ] Replies to Existing Posts
+- [x] Posts
+- [x] Replies to Existing Posts
