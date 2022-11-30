@@ -37,7 +37,23 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'body' => 'required',
+            'postID' => 'required',
+            'userID' => 'required',
+        ]);
+
+        $r = new Reply;
+        $r->body = $validatedData['body'];
+        $r->post_id = $validatedData['postID'];
+        $r->user_id = $validatedData['userID'];
+        $r->save();
+
+        $post = Post::where('id', '=', $r->post_id)->first();
+        $subForum = SubForum::where('id', '=', $post->sub_forum_id)->first();
+
+        session()->flash('message', 'Reply was created');
+        return redirect()->route('post.show', ['id'=>$subForum->id, 'pid'=>$post->id]);
     }
 
     /**

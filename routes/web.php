@@ -21,8 +21,8 @@ Route::get('/{id}', [MainController::class, 'show'])->name('forum.show');
 
 Route::post('/{id}', [MainController::class, 'store'])->name('forum.store');
 
-Route::get('/{id}/create', [MainController::class, 'create'])->name('forum.create');
+Route::get('/{id}/create', [MainController::class, 'create'])->name('post.create');
 
 Route::get('/{id}/{pid}', [PostController::class, 'show'])->name('post.show');
 
-
+Route::post('/{id}/{pid}', [PostController::class, 'store'])->name('post.reply');

@@ -38,7 +38,6 @@ class MainController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',

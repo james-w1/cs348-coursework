@@ -2,6 +2,8 @@
 
 @section('title', '')
 
+@section('header', '')
+
 @section('content')
 
     <p>Subforums:</p>

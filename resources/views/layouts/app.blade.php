@@ -1,10 +1,10 @@
 <!doctype HTML>
 <head>
-    <title>My Forum @yield('title')</title>
+    <title>My Forum | @yield('title')</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <h3><a href="{{ route('forum.index') }}">My Forum</a> @yield('title')</h3>
+    <h3><a href="{{ route('forum.index') }}">root</a>@yield('header')</h3>
     <hr>
 
     <div>@yield('content')</div>
