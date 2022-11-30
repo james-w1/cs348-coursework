@@ -5,7 +5,7 @@
 @section('content')
 
     <a href="">Create Post</a>
- 
+    
     <ul>
     @foreach($posts as $post)
         <li>

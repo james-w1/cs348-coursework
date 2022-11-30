@@ -4,7 +4,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <span><h3>My Forum @yield('title')</h3></span>
+    <h3><a href="{{ route('forum.index') }}">My Forum</a> @yield('title')</h3>
     <hr>
 
     <div>@yield('content')</div>
