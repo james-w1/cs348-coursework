@@ -6,6 +6,7 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [ ] Refactor to use Route Model Binding
 - [ ] Make Nice CSS & HTML
 - [ ] Fix Site Layout & Navigation
+- [ ] Use livewire to implement AJAX for all of the neccesary things in the site.
 #### View:
 - [x] SubFourms
 - [x] Posts
@@ -14,3 +15,4 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 #### Create:
 - [x] Posts
 - [x] Replies to Existing Posts
+
