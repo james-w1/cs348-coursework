@@ -17,12 +17,12 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [MainController::class, 'index'])->name('forum.index');
 
-Route::get('/{sub_forum}', [MainController::class, 'show'])->name('forum.show');
+Route::get('/sub-forum/{sub_forum}', [MainController::class, 'show'])->name('forum.show');
 
-Route::post('/{sub_forum}', [MainController::class, 'store'])->name('forum.store');
+Route::post('/sub-forum/{sub_forum}', [MainController::class, 'store'])->name('forum.store');
 
-Route::get('/{sub_forum}/create', [MainController::class, 'create'])->name('post.create');
+Route::get('/sub-forum/{sub_forum}/create', [MainController::class, 'create'])->name('post.create');
 
-Route::get('/{sub_forum}/{post}', [PostController::class, 'show'])->name('post.show');
+Route::get('/sub-forum/{sub_forum}/post/{post}', [PostController::class, 'show'])->name('post.show');
 
-Route::post('/{sub_forum}/{post}', [PostController::class, 'store'])->name('post.reply');
+Route::post('/sub-forum/{sub_forum}/post/{post}', [PostController::class, 'store'])->name('post.reply');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\SubForum;
 use App\Models\Post;
 use App\Models\Reply;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -65,10 +66,9 @@ class PostController extends Controller
      */
     public function show(SubForum $sub_forum, Post $post)
     {
-        #$post = Post::findOrFail($pid);
         $replies = Reply::where('post_id', '=', $post->id)->paginate(7);
-        #$subForum = SubForum::findOrFail($id);
-        return view('forum.post', ['subForum'=>$sub_forum, 'post'=>$post, 'replies'=>$replies]);
+        $op = User::where('id', '=', $post->user_id)->first();
+        return view('forum.post', ['subForum'=>$sub_forum, 'post'=>$post, 'replies'=>$replies, 'op'=>$op]);
     }
 
     /**
