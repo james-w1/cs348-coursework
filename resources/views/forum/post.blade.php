@@ -16,7 +16,7 @@
     @foreach($replies as $reply)
         <div style="padding: 2px; border: 2px solid black;">
             <p>{{ $reply->body }}</p>
-            <p style="font-size: 9px;">Posted By: {{  }} | Posted On: {{ $reply->created_at }}</p>
+            <p style="font-size: 9px;">Posted By: | Posted On: {{ $reply->created_at }}</p>
         </div>
     @endforeach
     </div>
