@@ -24,10 +24,10 @@
 
     
     <p> Quick Reply: </p>
-    <form method="POST" action=" {{ route('post.reply', ['id'=>$subForum->id, 'pid'=>$post->id]) }}">
+    <form method="POST" action=" {{ route('post.reply', ['sub_forum'=>$subForum, 'post'=>$post]) }}">
         @csrf
-        <p>Body: <input type="text" name="{{ old('body') }}"></p>
-        <p>UserID: <input type="text" name="{{ old('user_id ') }}"></p>
+        <p>Body: <input type="text" name="body" value="{{ old('body') }}"></p>
+        <p>UserID: <input type="text" name="user_id" value="{{ old('user_id ') }}"></p>
         <input type="hidden" name="post_id" value="{{ $post->id }}">
     
         <input type="submit" value="Submit">
@@ -40,6 +40,6 @@
     @endif
 
 
-    <a href="{{ route('forum.show', ['id' => $subForum->id]) }}">back</a>
+    <a href="{{ route('forum.show', ['sub_forum' => $subForum]) }}">back</a>
 
 @endsection

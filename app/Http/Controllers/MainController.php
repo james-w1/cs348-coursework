@@ -24,10 +24,10 @@ class MainController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(SubForum $sub_forum)
     {
-        $subForum = SubForum::findOrFail($id);
-        return view('forum.createPost', ['subForum'=>$subForum]);
+        #$subForum = SubForum::findOrFail($id);
+        return view('forum.createPost', ['subForum'=>$sub_forum]);
     }
 
     /**
@@ -36,13 +36,14 @@ class MainController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, SubForum $sub_forum)
     {
+
         $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',
             'user_id' => 'required',
-            'sub_forum_id' => 'required',
+            'sub_forum_id' => 'required'
         ]);
 
         $p = new Post;
@@ -53,7 +54,7 @@ class MainController extends Controller
         $p->save();
 
         session()->flash('message', 'Post was created');
-        return redirect()->route('forum.show', ['id'=>$validatedData['sub_forum_id']]);
+        return redirect()->route('forum.show', ['sub_forum'=>$sub_forum]);
     }
 
     /**
@@ -62,11 +63,11 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SubForum $sub_forum)
     {
-        $subForum = SubForum::findOrFail($id);
-        $posts = Post::all()->where('sub_forum_id', '=', $subForum->id);
-        return view('forum.subForum', ['subForum'=>$subForum, 'posts'=>$posts]);
+        #$sub_forum = SubForum::findOrFail($id);
+        $posts = Post::all()->where('sub_forum_id', '=', $sub_forum->id);
+        return view('forum.subForum', ['subForum'=>$sub_forum, 'posts'=>$posts]);
     }
 
     /**

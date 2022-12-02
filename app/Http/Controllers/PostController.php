@@ -50,10 +50,10 @@ class PostController extends Controller
         $r->save();
 
         $post = Post::where('id', '=', $r->post_id)->first();
-        $subForum = SubForum::where('id', '=', $post->sub_forum_id)->first();
+        $sub_forum = SubForum::where('id', '=', $post->sub_forum_id)->first();
 
         session()->flash('message', 'Reply was created');
-        return redirect()->route('post.show', ['id'=>$subForum->id, 'pid'=>$post->id]);
+        return redirect()->route('post.show', ['sub_forum'=>$sub_forum, 'post'=>$post]);
     }
 
     /**
@@ -63,12 +63,12 @@ class PostController extends Controller
      * @param  int  $pid
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $pid)
+    public function show(SubForum $sub_forum, Post $post)
     {
-        $post = Post::findOrFail($pid);
+        #$post = Post::findOrFail($pid);
         $replies = Reply::where('post_id', '=', $post->id)->paginate(7);
-        $subForum = SubForum::findOrFail($id);
-        return view('forum.post', ['subForum'=>$subForum, 'post'=>$post, 'replies'=>$replies]);
+        #$subForum = SubForum::findOrFail($id);
+        return view('forum.post', ['subForum'=>$sub_forum, 'post'=>$post, 'replies'=>$replies]);
     }
 
     /**
