@@ -39,14 +39,14 @@ class PostController extends Controller
     {
         $validatedData = $request->validate([
             'body' => 'required',
-            'postID' => 'required',
-            'userID' => 'required',
+            'post_id' => 'required',
+            'user_id' => 'required',
         ]);
 
         $r = new Reply;
         $r->body = $validatedData['body'];
-        $r->post_id = $validatedData['postID'];
-        $r->user_id = $validatedData['userID'];
+        $r->post_id = $validatedData['post_id'];
+        $r->user_id = $validatedData['user_id'];
         $r->save();
 
         $post = Post::where('id', '=', $r->post_id)->first();

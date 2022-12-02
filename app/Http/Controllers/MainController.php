@@ -41,19 +41,19 @@ class MainController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'subForum' => 'required',
-            'userID' => 'required',
+            'user_id' => 'required',
+            'sub_forum_id' => 'required',
         ]);
 
         $p = new Post;
         $p->title = $validatedData['title'];
         $p->body = $validatedData['body'];
-        $p->sub_forum_id = $validatedData['subForum'];
-        $p->user_id = $validatedData['userID'];
+        $p->user_id = $validatedData['user_id'];
+        $p->sub_forum_id = $validatedData['sub_forum_id'];
         $p->save();
 
         session()->flash('message', 'Post was created');
-        return redirect()->route('forum.show', ['id'=>$validatedData['subForum']]);
+        return redirect()->route('forum.show', ['id'=>$validatedData['sub_forum_id']]);
     }
 
     /**

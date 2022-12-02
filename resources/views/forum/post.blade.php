@@ -26,9 +26,9 @@
     <p> Quick Reply: </p>
     <form method="POST" action=" {{ route('post.reply', ['id'=>$subForum->id, 'pid'=>$post->id]) }}">
         @csrf
-        <p>Body: <input type="text" name="body"></p>
-        <p>UserID: <input type="text" name="userID"></p>
-        <input type="hidden" name="postID" value="{{ $post->id }}">
+        <p>Body: <input type="text" name="{{ old('body') }}"></p>
+        <p>UserID: <input type="text" name="{{ old('user_id ') }}"></p>
+        <input type="hidden" name="post_id" value="{{ $post->id }}">
     
         <input type="submit" value="Submit">
     </form>
