@@ -6,12 +6,13 @@
 
 @section('content')
 
-    <livewire:counter /> 
+    <!-- <livewire:counter />-->
+
 
     <p>Subforums:</p>
     <ul>
-    @foreach($subForums as $subForum)
-        <li><a href=" {{ route('forum.show', ['sub_forum' => $subForum]) }} ">{{ $subForum->name }}</a> - posts: {{ $subForum->posts()->count() }} </li>
+    @foreach($sub_forums as $sub_forum)
+        <li><a href=" {{ route('forum.show', ['sub_forum' => $sub_forum]) }} ">{{ $sub_forum->name }}</a> - posts: {{ $sub_forum->posts()->count() }} </li>
     @endforeach
     </ul>
 

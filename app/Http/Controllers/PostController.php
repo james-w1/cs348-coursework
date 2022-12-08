@@ -54,7 +54,7 @@ class PostController extends Controller
         $sub_forum = SubForum::where('id', '=', $post->sub_forum_id)->first();
 
         session()->flash('message', 'Reply was created');
-        return redirect()->route('post.show', ['sub_forum'=>$sub_forum, 'post'=>$post]);
+        #return redirect()->route('post.show', ['sub_forum'=>$sub_forum, 'post'=>$post]);
     }
 
     /**
@@ -68,7 +68,7 @@ class PostController extends Controller
     {
         $replies = Reply::where('post_id', '=', $post->id)->paginate(7);
         $op = User::where('id', '=', $post->user_id)->first();
-        return view('forum.post', ['subForum'=>$sub_forum, 'post'=>$post, 'replies'=>$replies, 'op'=>$op]);
+        return view('forum.post', ['sub_forum'=>$sub_forum, 'post'=>$post, 'replies'=>$replies, 'op'=>$op]);
     }
 
     /**

@@ -15,8 +15,8 @@ class MainController extends Controller
      */
     public function index()
     {
-        $subForums = SubForum::all();
-        return view('forum.index', ['subForums' => $subForums]);
+        $sub_forums = SubForum::all();
+        return view('forum.index', ['sub_forums' => $sub_forums]);
     }
 
     /**
@@ -27,7 +27,7 @@ class MainController extends Controller
     public function create(SubForum $sub_forum)
     {
         #$subForum = SubForum::findOrFail($id);
-        return view('forum.createPost', ['subForum'=>$sub_forum]);
+        return view('forum.createPost', ['sub_forum'=>$sub_forum]);
     }
 
     /**
@@ -67,7 +67,7 @@ class MainController extends Controller
     {
         #$sub_forum = SubForum::findOrFail($id);
         $posts = Post::all()->where('sub_forum_id', '=', $sub_forum->id);
-        return view('forum.subForum', ['subForum'=>$sub_forum, 'posts'=>$posts]);
+        return view('forum.subForum', ['sub_forum'=>$sub_forum, 'posts'=>$posts]);
     }
 
     /**

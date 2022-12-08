@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $subForum->name . '/' . $post->title)
+@section('title', $sub_forum->name . '/' . $post->title)
 
-@section('header', '/' . $subForum->name . '/' . $post->title)
+@section('header', '/' . $sub_forum->name . '/' . $post->title)
     
 
 @section('content')
@@ -10,6 +10,8 @@
     <p> {{ $post->body }} </p>
     <p style="font-size: 9px;">Posted By: {{ $op->name }} | Posted On: {{ $post->created_at }}</p>
     <hr>
+
+    @livewire('quick-reply', ['sub_forum'=>$sub_forum, 'post' => $post])
 
     <div class="container">
     <p>replies:</p>
@@ -23,17 +25,6 @@
 
     {{ $replies->links() }}
 
-    
-    <p> Quick Reply: </p>
-    <form method="POST" action=" {{ route('post.reply', ['sub_forum'=>$subForum, 'post'=>$post]) }}">
-        @csrf
-        <p>Body: <input type="text" name="body" value="{{ old('body') }}"></p>
-        <p>UserID: <input type="text" name="user_id" value="{{ old('user_id ') }}"></p>
-        <input type="hidden" name="post_id" value="{{ $post->id }}">
-    
-        <input type="submit" value="Submit">
-    </form>
-    
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <p style="color: red;">{{ $error }}</p>
@@ -41,6 +32,6 @@
     @endif
 
 
-    <a href="{{ route('forum.show', ['sub_forum' => $subForum]) }}">back</a>
+    <a href="{{ route('forum.show', ['sub_forum' => $sub_forum]) }}">back</a>
 
 @endsection
