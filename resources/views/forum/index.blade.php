@@ -6,6 +6,8 @@
 
 @section('content')
 
+    <livewire:counter /> 
+
     <p>Subforums:</p>
     <ul>
     @foreach($subForums as $subForum)
