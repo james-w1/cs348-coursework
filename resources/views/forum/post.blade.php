@@ -11,8 +11,6 @@
     <p style="font-size: 9px;">Posted By: {{ $op->name }} | Posted On: {{ $post->created_at }}</p>
     <hr>
 
-    @livewire('quick-reply', ['sub_forum'=>$sub_forum, 'post' => $post])
-
     <div class="container">
     <p>replies:</p>
     @foreach($replies as $reply)
@@ -25,12 +23,13 @@
 
     {{ $replies->links() }}
 
+    @livewire('quick-reply', ['sub_forum'=>$sub_forum, 'post' => $post])
+
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <p style="color: red;">{{ $error }}</p>
         @endforeach
     @endif
-
 
     <a href="{{ route('forum.show', ['sub_forum' => $sub_forum]) }}">back</a>
 
