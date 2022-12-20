@@ -1,6 +1,4 @@
-<div>
-    <h1>Hello World!</h1>
-
+<div class="bg-slate">
     <p> Quick Reply: </p>
     <form method="POST" action=" {{ route('post.reply', ['sub_forum'=>$sub_forum, 'post'=>$post]) }}">
         @csrf

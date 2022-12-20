@@ -17,7 +17,7 @@
                 </a>
             </div>
             <div class="text-sm">
-                <p>{{ Str::limit($post->body, 30) }}</p> 
+                <p>{{ Str::limit($post->body, 100) }}</p> 
                 <p>{{ $post->reply->count() }} replies</p>
             </div>
         </li>
