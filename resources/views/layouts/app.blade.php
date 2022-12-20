@@ -2,12 +2,13 @@
 <head>
     @livewireStyles
     <title>My Forum | @yield('title')</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @vite('resources/css/app.css')
 </head>
 <body>
     @livewireScripts
-    <h3><a href="{{ route('forum.index') }}">forum</a>@yield('header')</h3>
-    <hr>
+    <div class="flex bg-slate-300 h-10 w-full">
+        <h3 class="px-2 py-2 text-sky-600 hover:text-black"><a href="{{ route('forum.index') }}">forum</a>@yield('header')</h3>
+    </div>
 
-    <div>@yield('content')</div>
+    <div class="bg-slate-200">@yield('content')</div>
 </body>
