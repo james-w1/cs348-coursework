@@ -10,11 +10,15 @@ class QuickReply extends Component {
 
     public $post;
     public $sub_forum;
+    public $show = false;
 
     public function render() {
         return view('livewire.quick-reply', ['sub_forum'=>$this->sub_forum, 'post'=>$this->post]);
     }
 
+    public function toggleShow() {
+        $this->show =! $this->show;
+    }
 }
 
 ?>
