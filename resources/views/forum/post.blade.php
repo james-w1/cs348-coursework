@@ -9,7 +9,9 @@
     <div class="bg-primary-200 p-2 rounded-md">
         <p class="text-lg"> {{ $post->title }} </p>
         <p class=""> {{ $post->body }} </p>
-        <p class="text-primary-500 text-sm">Posted By: {{ $op->name }} | Posted On: {{ $post->created_at }}</p>
+        <div class="flex flex-row-reverse">
+            <p class="text-primary-500 text-sm">Posted By: {{ $op->name }} | Posted On: {{ $post->created_at }}</p>
+        </div>
     </div>
 
     <div class="">
@@ -20,9 +22,11 @@
         @foreach($replies as $reply)
             <div class="p-2 bg-primary-200 rounded-md space-y-2">
                 <p>{{ $reply->body }}</p>
-                <p class="text-sm text-primary-500">
-                    Posted By: {{ $repliers[$reply->id]->name }} | Posted On: {{ $reply->created_at }}
-                </p>
+                <div class="flex flex-row-reverse">
+                    <p class="text-sm text-primary-500">
+                        Posted By: {{ $repliers[$reply->id]->name }} | Posted On: {{ $reply->created_at }}
+                    </p>
+                </div>
             </div>
         @endforeach
     </div>
