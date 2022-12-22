@@ -7,6 +7,10 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [ ] Use TailwindCSS to style the site
 - [ ] Fix Site Layout & Navigation
 - [ ] Use livewire to implement AJAX for all of the neccesary things in the site.
+- [ ] Darkmode
+- [ ] Re-order posts
+- [ ] Display-all 
+- [ ] user-presense
 #### View:
 - [x] SubFourms
 - [x] Posts

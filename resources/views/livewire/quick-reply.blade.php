@@ -1,6 +1,6 @@
 <div>
     <button 
-        class="px-4 rounded-md bg-primary-300 hover:bg-secondary-300 hover:text-primary-100"
+        class="px-4 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
         wire:click="toggleShow"
     >Quick Reply</button>
     

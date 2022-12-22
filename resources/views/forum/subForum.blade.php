@@ -6,7 +6,10 @@
 
 @section('content')
 
-    <a class="rounded-md bg-primary-200 p-2 hover:bg-secondary-300 hover:text-primary-100" href="{{ route('post.create', ['sub_forum' => $sub_forum]) }}">Create Post</a>
+    <div class="w-full p-2">
+        <a class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100" href="{{ route('forum.index') }}">back</a>
+        <a class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100" href="{{ route('post.create', ['sub_forum' => $sub_forum]) }}">Create Post</a>
+    </div>
     
     <ul role="list" class="bg-primary-100 p-2 space-y-2">
     @foreach($posts as $post)
@@ -18,12 +21,16 @@
             </div>
             <div class="text-sm">
                 <p>{{ Str::limit($post->body, 100) }}</p> 
-                <p>{{ $post->reply->count() }} replies</p>
+                <div class="flex text-primary-500 justify-between w-full">
+                    <p>{{ $post->reply->count() }} replies</p>
+                    <p class="order-last">
+                        Posted By: {{ $post->user_id }} | Posted On: {{ $post->created_at }}
+                    </p>
+                </div>
             </div>
         </li>
     @endforeach
     </ul>
 
-    <a class="rounded-md bg-primary-200 p-2 hover:bg-secondary-300 hover:text-primary-100" href="{{ route('forum.index') }}">back</a>
 
 @endsection
