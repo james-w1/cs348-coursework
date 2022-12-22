@@ -2,7 +2,11 @@
 
 @section('title', $sub_forum->name)
 
-@section('header', '/' . $sub_forum->name)
+@section('header')
+    <span>
+        / <a class="hover:text-primary-400" href="{{ route('forum.show', ['sub_forum'=>$sub_forum]) }}">{{ $sub_forum->name }}</a>
+    </span>
+@endsection
 
 @section('content')
 

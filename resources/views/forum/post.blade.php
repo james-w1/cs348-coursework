@@ -2,8 +2,12 @@
 
 @section('title', $sub_forum->name . '/' . $post->title)
 
-@section('header', '/' . $sub_forum->name . '/' . $post->title)
-    
+@section('header')
+    <span>
+        / <a class="hover:text-primary-400" href="{{ route('forum.show', ['sub_forum'=>$sub_forum]) }}">{{ $sub_forum->name }}</a>
+        / <a class="hover:text-primary-400" href="{{ route('post.show', ['sub_forum'=>$sub_forum, 'post'=>$post]) }}">{{ $post->title }}</a>
+    </span>
+@endsection
 
 @section('content')
     <div class="bg-primary-200 p-2 rounded-md">
