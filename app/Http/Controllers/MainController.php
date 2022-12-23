@@ -38,7 +38,6 @@ class MainController extends Controller
      */
     public function store(Request $request, SubForum $sub_forum)
     {
-
         $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',

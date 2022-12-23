@@ -19,6 +19,10 @@ class QuickReply extends Component {
     public function toggleShow() {
         $this->show =! $this->show;
     }
+
+    public function storeReply() {
+        
+    }
 }
 
 ?>

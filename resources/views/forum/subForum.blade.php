@@ -12,7 +12,9 @@
 
     <div class="w-full p-2">
         <a class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100" href="{{ route('forum.index') }}">back</a>
-        <a class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100" href="{{ route('post.create', ['sub_forum' => $sub_forum]) }}">Create Post</a>
+        @if (Auth::user())
+            <a class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100" href="{{ route('post.create', ['sub_forum' => $sub_forum]) }}">Create Post</a>
+        @endif
     </div>
     
     <ul role="list" class="bg-primary-100 p-2 space-y-2">
@@ -30,6 +32,11 @@
                     <p class="order-last">
                         Posted By: {{ $post->user_id }} | Posted On: {{ $post->created_at }}
                     </p>
+                    @if (Auth::user())
+                        @if (Auth::user()->id == $post->user_id)
+                            <p class="text-secondary-700">posted by you</p>
+                        @endif
+                    @endif
                 </div>
             </div>
         </li>

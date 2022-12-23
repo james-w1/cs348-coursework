@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,16 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', [MainController::class, 'index'])->name('forum.index');
+
+Route::get('/register', [RegisterController::class, 'create'])->name('register.create');
+
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login.form');
+
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.auth');
+
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
 Route::get('/sub-forum/{sub_forum}', [MainController::class, 'show'])->name('forum.show');
 
