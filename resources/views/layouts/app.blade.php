@@ -31,5 +31,12 @@
         @endif
     </div>
 
-    <div class="h-screen p-2 bg-primary-100">@yield('content')</div>
+    <div class="h-screen p-2 bg-primary-100">
+        @yield('content')
+        <!--
+        <div class="w-screen bg-primary-200">
+            <p>footer</p>
+        </div>
+        -->
+    </div>
 </body>

@@ -10,6 +10,8 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [ ] Darkmode
 - [ ] Re-order posts
 - [ ] Display-all 
+- [ ] Highlight user posts
+- [ ] Pagination on all pages
 ### Account Related
 - [ ] Reset password
 - [ ] login with user or password
@@ -20,3 +22,10 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [ ] Zoom in and out
 - [ ] Drag and drop images
 - [ ] Image type & file size restriction
+### Maybe?
+- [ ] Timeout
+- [ ] Higher user privelages based on interaction
+- [ ] Rules & Guidence
+- [ ] Post Reporting
+- [ ] User Guide
+- [ ] Mobile Design

@@ -15,7 +15,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        $sub_forums = SubForum::all();
+        $sub_forums = SubForum::paginate(7);
         return view('forum.index', ['sub_forums' => $sub_forums]);
     }
 
@@ -65,7 +65,7 @@ class MainController extends Controller
     public function show(SubForum $sub_forum)
     {
         #$sub_forum = SubForum::findOrFail($id);
-        $posts = Post::all()->where('sub_forum_id', '=', $sub_forum->id);
+        $posts = Post::where('sub_forum_id', '=', $sub_forum->id)->paginate(7);
         return view('forum.subForum', ['sub_forum'=>$sub_forum, 'posts'=>$posts]);
     }
 

@@ -16,4 +16,6 @@
     @endforeach
     </ul>
 
+    {{ $sub_forums->links() }}
+
 @endsection
