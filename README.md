@@ -14,8 +14,9 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [ ] Reset password
 - [ ] login with user or password
 - [ ] Password Reset 
-- [ ] Delete Account
+- [ ] Delete Account & Export Data
 ### Image Related
 - [ ] Images with resizing 
 - [ ] Zoom in and out
 - [ ] Drag and drop images
+- [ ] Image type & file size restriction
