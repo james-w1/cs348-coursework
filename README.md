@@ -5,18 +5,15 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 ### ToDo:
 - [x] Refactor to use Route Model Binding
 - [x] Use TailwindCSS to style the site
-- [ ] Fix Site Layout & Navigation
-- [ ] Use livewire to implement AJAX for all of the neccesary things in the site.
+- [x] Fix Site Layout & Navigation
+- [x] Use livewire to implement AJAX for all of the neccesary things in the site.
 - [ ] Darkmode
 - [ ] Re-order posts
 - [ ] Display-all 
-- [ ] user-presense
-#### View:
-- [x] SubFourms
-- [x] Posts
-- [x] Replies
-- [x] User Accounts
-#### Create:
-- [x] Posts
-- [x] Replies to Existing Posts
+### Account Related
+- [ ] Reset password
+- [ ] Images with resizing 
+- [ ] login with user or password
+- [ ] Password Reset 
+- [ ] Delete Account
 
