@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Reply;
 
 class ProfileController extends Controller
 {
@@ -15,7 +17,9 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        return view('forum.profile', ['user'=>$user]);
+        $posts = Post::where('user_id', '=', $user->id)->paginate(7, ['*'], 'post');
+        $replies = Reply::where('user_id', '=', $user->id)->paginate(7, ['*'], 'reply');
+        return view('forum.profile', ['user'=>$user, 'posts'=>$posts, 'replies'=>$replies]);
     }
 
     /**

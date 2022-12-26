@@ -7,7 +7,17 @@
 <body>
     @livewireScripts
     <div class="flex bg-primary-300 h-10 w-full">
-        <h3 class="p-2 text-secondary-600 flex-grow"><a class="hover:text-primary-400" href="{{ route('forum.index') }}">forum</a>@yield('header')</h3>
+        <h3
+            class="p-2 text-secondary-600 flex-grow"
+        >
+            <a
+                class="hover:text-primary-400"
+                href="{{ route('forum.index') }}"
+            >
+                forum
+            </a>
+            @yield('header')
+        </h3>
         @if (Auth::user())
             <a 
                 class="p-2 text-secondary-600 hover:text-primary-400"

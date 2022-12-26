@@ -29,3 +29,6 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [ ] Post Reporting
 - [ ] User Guide
 - [ ] Mobile Design
+- [ ] https://github.com/sunspikes/clamav-validator
+- [ ] SearchBar
+
