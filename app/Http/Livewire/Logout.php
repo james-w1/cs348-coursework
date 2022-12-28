@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class Logout extends Component
 {
@@ -13,6 +14,8 @@ class Logout extends Component
     }
 
     public function logout() {
+        Session::flush();
+
         Auth::logout();
     }
 }

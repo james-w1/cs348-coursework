@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('title', '/profile/' . $user->name)
@@ -17,7 +16,7 @@
         @if (Auth::user()->id == $user->id )
                 <a 
                     class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
-                    href="{{ route('forum.index') }}"
+                    href="{{ route('profile.settings', ['user'=>Auth::user()]) }}"
                 >
                     settings
                 </a>

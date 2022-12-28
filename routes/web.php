@@ -30,6 +30,8 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login.aut
 
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 
+Route::get('/profile/{user}/settings', [ProfileController::class, 'edit'])->name('profile.settings');
+
 Route::get('/sub-forum/{sub_forum}', [MainController::class, 'show'])->name('forum.show');
 
 Route::post('/sub-forum/{sub_forum}', [MainController::class, 'store'])->name('forum.store');

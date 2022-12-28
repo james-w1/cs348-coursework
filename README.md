@@ -11,10 +11,9 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [ ] Re-order posts
 - [ ] Display-all 
 - [ ] Highlight user posts
-- [ ] Pagination on all pages
+- [x] Pagination on all pages
 ### Account Related
 - [ ] Reset password
-- [ ] login with user or password
 - [ ] Password Reset 
 - [ ] Delete Account & Export Data
 ### Image Related

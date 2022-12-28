@@ -15,7 +15,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        $sub_forums = SubForum::paginate(7);
+        $sub_forums = SubForum::paginate();
         return view('forum.index', ['sub_forums' => $sub_forums]);
     }
 

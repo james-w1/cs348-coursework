@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Reply;
+use App\Models\SubForum;
 
 class ProfileController extends Controller
 {
@@ -28,9 +29,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('forum.profileSettings', ['user'=>$user]);
     }
 
     /**
