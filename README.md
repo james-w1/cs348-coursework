@@ -7,10 +7,9 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [x] Use TailwindCSS to style the site
 - [x] Fix Site Layout & Navigation
 - [x] Use livewire to implement AJAX for all of the neccesary things in the site.
-- [ ] Darkmode
 - [ ] Re-order posts
 - [ ] Display-all 
-- [ ] Highlight user posts
+- [x] Highlight user posts
 - [x] Pagination on all pages
 ### Account Related
 - [ ] Reset password
@@ -22,6 +21,7 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [ ] Drag and drop images
 - [ ] Image type & file size restriction
 ### Maybe?
+- [ ] Darkmode
 - [ ] Timeout
 - [ ] Higher user privelages based on interaction
 - [ ] Rules & Guidence
