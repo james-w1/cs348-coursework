@@ -14,24 +14,67 @@
         </a>
     </div>
 
-    <div 
-        class="px-20 p-1 flex flex-col items-center justify-center bg-primary-200 rounded-md overflow-y-scroll"
-    >
-        <p> change username </p>
-        <div class="px-10 py-2 flex items-center justify-center rounded-md">
-            <form class="space-y-2">
-                <p>new name: 
-                    <input class="px-2 bg-primary-50 rounded-md" name="name" type="text">
-                </p>
-                <p>password: 
-                    <input class="px-2 bg-primary-50 rounded-md" name="password" type="password">
-                </p>
-                <input 
-                    class="p-1 rounded-md bg-primary-50 hover:bg-secondary-300 hover:text-primary-100" 
-                    type="submit" 
-                    value="submit"
-                >
-            </form>
+    <div class="space-y-6">
+        <div 
+            class="px-20 p-1 flex flex-col items-center justify-center bg-primary-200 rounded-md overflow-y-scroll"
+        >
+            <p> change username </p>
+            <div 
+                class="px-10 py-2 flex items-center justify-center rounded-md"
+            >
+                <form class="space-y-2">
+                    <p>new name: 
+                        <input 
+                            class="px-2 bg-primary-50 rounded-md" 
+                            name="name" 
+                            type="text"
+                        >
+                    </p>
+                    <p>password: 
+                        <input 
+                            class="px-2 bg-primary-50 rounded-md" 
+                            name="password" 
+                            type="password"
+                        >
+                    </p>
+                    <input 
+                        class="p-1 rounded-md bg-primary-50 hover:bg-secondary-300 hover:text-primary-100" 
+                        type="submit" 
+                        value="submit"
+                    >
+                </form>
+            </div>
+        </div>
+
+        <div 
+            class="px-20 p-1 flex flex-col items-center justify-center bg-primary-200 rounded-md overflow-y-scroll"
+        >
+            <p> change password </p>
+            <div 
+                class="px-10 py-2 flex items-center justify-center rounded-md"
+            >
+                <form class="space-y-2">
+                    <p>current password: 
+                        <input 
+                            class="px-2 bg-primary-50 rounded-md"
+                            name="name"
+                            type="text"
+                        >
+                    </p>
+                    <p>new password: 
+                        <input
+                            class="px-2 bg-primary-50 rounded-md" 
+                            name="password" 
+                            type="password"
+                        >
+                    </p>
+                    <input 
+                        class="p-1 rounded-md bg-primary-50 hover:bg-secondary-300 hover:text-primary-100" 
+                        type="submit" 
+                        value="submit"
+                    >
+                </form>
+            </div>
         </div>
     </div>
 
