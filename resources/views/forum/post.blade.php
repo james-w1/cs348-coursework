@@ -17,10 +17,14 @@
 
 @section('content')
     <div class="p-2 bg-primary-200 rounded-md">
-        <p class="text-lg">
+        <p 
+            class="text-lg"
+        >
             {{ $post->title }} 
         </p>
-        <p class="text-base">
+        <p 
+            class="text-base"
+        >
             {{ $post->body }} 
         </p>
         <div 
@@ -52,7 +56,7 @@
         @foreach($replies as $reply)
             <div 
                 @if (Auth::user())
-                    @if (Auth::user()->id == $post->user_id)
+                    @if (Auth::user()->id == $reply->user_id)
                         class="p-2 bg-primary-300 rounded-md space-y-2"
                     @else
                         class="p-2 bg-primary-200 rounded-md space-y-2"
@@ -61,13 +65,17 @@
                     class="p-2 bg-primary-200 rounded-md space-y-2"
                 @endif
             >
-                <div class="flex justify-between text-lg w-full">
+                <div 
+                    class="flex justify-between text-lg w-full"
+                >
                     <p class="text-base">
                         {{ $reply->body }}
                     </p>
                     @if (Auth::user())
-                        @if (Auth::user()->id == $post->user_id)
-                            <div class="order-last flex space-x-2 text-sm text-secondary-700">
+                        @if (Auth::user()->id == $reply->user_id)
+                            <div 
+                                class="order-last flex space-x-2 text-sm text-secondary-700"
+                            >
                                 <a 
                                     class="hover:underline hover:text-secondary-500" 
                                     href="#"
@@ -84,8 +92,12 @@
                         @endif
                     @endif
                 </div>
-                <div class="flex flex-row-reverse">
-                    <p class="text-sm text-primary-500">
+                <div 
+                    class="flex flex-row-reverse"
+                >
+                    <p 
+                        class="text-sm text-primary-500"
+                    >
                         Posted By: {{ $reply->User->name }} | Posted On: {{ $reply->created_at }}
                     </p>
                 </div>
@@ -94,7 +106,6 @@
     </div>
 
     {{ $replies->links() }}
-
 
     @if ($errors->any())
         @foreach ($errors->all() as $error)
