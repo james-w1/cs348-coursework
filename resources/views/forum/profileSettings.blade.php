@@ -5,7 +5,9 @@
 @section('header', '/ profile / ' . $user->name . ' / settings')
     
 @section('content')
-    <div class="pb-2 flex w-full">
+    <div 
+        class="pb-2 flex w-full"
+    >
         <a 
             class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
             href="{{ route('profile.show', ['user'=>$user]) }}"
@@ -14,7 +16,9 @@
         </a>
     </div>
 
-    <div class="space-y-6">
+    <div 
+        class="space-y-6"
+    >
         <div 
             class="px-20 p-1 flex flex-col items-center justify-center bg-primary-200 rounded-md overflow-y-scroll"
         >
@@ -22,7 +26,9 @@
             <div 
                 class="px-10 py-2 flex items-center justify-center rounded-md"
             >
-                <form class="space-y-2">
+                <form 
+                    class="space-y-2"
+                >
                     @csrf
                     <p>New Name: 
                         <input 

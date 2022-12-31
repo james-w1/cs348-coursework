@@ -5,9 +5,14 @@
 @section('header', '')
 
 @section('content')
-    <ul role="list" class=" p-2 space-y-2">
+    <ul 
+        role="list" 
+        class=" p-2 space-y-2"
+    >
     @foreach($sub_forums as $sub_forum)
-        <li class="flex bg-primary-200 p-2 rounded-md">
+        <li 
+            class="flex bg-primary-200 p-2 rounded-md"
+        >
             <div class="">
                 <a
                     class="text-secondary-500 hover:text-primary-400" 

@@ -30,4 +30,5 @@ This is a simple forum-like website made using the Laravel framework for my CS34
 - [ ] Mobile Design
 - [ ] https://github.com/sunspikes/clamav-validator
 - [ ] SearchBar
+- [ ] User's posts change on cascade
 

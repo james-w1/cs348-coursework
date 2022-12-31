@@ -15,7 +15,7 @@
             class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100"
             href="{{ route('forum.index') }}"
         >
-            back
+            Back
         </a>
         @if (Auth::user())
             <a
