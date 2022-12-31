@@ -7,8 +7,8 @@
         ],
         theme: {
             fontFamily: {
-                display: ['IBM Plex Mono', 'Menlo', 'monospace'],
-                body: ['IBM Plex Mono', 'Menlo', 'monospace'],
+                display: ['Inter', 'system-ui', 'sans-serif'],
+                body: ['Inter', 'system-ui', 'sans-serif'],
             },
             colors: {
                 primary: {

@@ -6,7 +6,7 @@
 </head>
 <body>
     @livewireScripts
-    <div class="flex bg-primary-300 h-10 w-full">
+    <div class="flex sticky top-0 bg-primary-300 h-10 w-full">
         <h3
             class="p-2 text-secondary-600 flex-grow"
         >
