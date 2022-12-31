@@ -65,8 +65,7 @@ class MainController extends Controller
      */
     public function show(SubForum $sub_forum)
     {
-        $posts = Post::where('sub_forum_id', '=', $sub_forum->id)->paginate(7);
-        #$sub_forum = SubForum::findOrFail($id);
+        $posts = Post::where('sub_forum_id', '=', $sub_forum->id)->orderBy('created_at', 'desc')->paginate(7);
         return view('forum.subForum', ['sub_forum'=>$sub_forum, 'posts'=>$posts]);
     }
 

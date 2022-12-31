@@ -33,8 +33,8 @@
             <ul role="list" class="p-2 space-y-2">
                 @foreach($posts as $post)
                     <li class="bg-primary-100 p-2 rounded-md">
-                        <div class="w-full">
-                            <span>
+                        <div class="w-full flex">
+                            <div class="flex-grow">
                                 <a
                                     class="text-secondary-500 hover:text-black"
                                     href=""
@@ -48,7 +48,12 @@
                                 >
                                     {{ $post->SubForum->name }}
                                 </a> 
-                            </span>
+                            </div>
+                            <div>
+                                <p class="text-sm text-primary-500">
+                                    Replies: {{ $post->reply->count() }} | {{ $post->created_at }}
+                                </p>
+                            </div>
                         </div>
                     </li>
                 @endforeach
@@ -67,8 +72,8 @@
             <ul role="list" class="p-2 space-y-2">
                 @foreach($replies as $reply)
                     <li class="bg-primary-100 p-2 rounded-md">
-                        <div class="w-full">
-                            <span>
+                        <div class="flex w-full">
+                            <div class="flex-grow">
                                 <a
                                     class="text-secondary-500 hover:text-black"
                                     href=""
@@ -82,7 +87,12 @@
                                 >
                                     {{ $reply->Post->title }}
                                 </a> 
-                            </span>
+                            </div>
+                            <div class="">
+                                <p class="text-sm text-primary-500">
+                                    {{ $reply->created_at }}
+                                </p>
+                            </div>
                         </div>
                     </li>
                 @endforeach
