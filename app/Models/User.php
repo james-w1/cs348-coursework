@@ -43,11 +43,11 @@ class User extends Authenticatable
     ];
 
     public function post() {
-        return $this->belongsToMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 
     public function reply() {
-        return $this->belongsToMany(Reply::class);
+        return $this->hasMany(Reply::class);
     }
 
     public function friends() {

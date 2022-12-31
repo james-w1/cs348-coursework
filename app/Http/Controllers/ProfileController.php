@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Reply;
 use App\Models\SubForum;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
@@ -20,7 +23,12 @@ class ProfileController extends Controller
     {
         $posts = Post::where('user_id', '=', $user->id)->paginate(7, ['*'], 'post');
         $replies = Reply::where('user_id', '=', $user->id)->paginate(7, ['*'], 'reply');
-        return view('forum.profile', ['user'=>$user, 'posts'=>$posts, 'replies'=>$replies]);
+
+        return view('forum.profile', [
+            'user'=>$user,
+            'posts'=>$posts,
+            'replies'=>$replies,
+        ]);
     }
 
     /**
@@ -52,8 +60,24 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
-        //
+        $validated = $request->validate([
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt([
+            'name' => $user->name, 
+            'password' => $validated['password'],
+        ])) {
+            Auth::logout();
+            Session::flush();
+            $user->delete();
+
+            return redirect()->route('forum.index');
+        }
+        return redirect()->route('profile.settings', ['user'=>$user])->withErrors([
+            'password' => 'password is incorrect',
+        ]);
     }
 }

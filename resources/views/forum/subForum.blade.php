@@ -10,7 +10,7 @@
 
 @section('content')
 
-    <div class="w-full p-2">
+    <div class="space-x-2 w-full pl-2">
         <a 
             class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100"
             href="{{ route('forum.index') }}"
@@ -70,7 +70,7 @@
                 >
                     <p>{{ $post->reply->count() }} replies</p>
                     <p class="order-last">
-                        Posted By: {{ $post->user_id }} | Posted On: {{ $post->created_at }}
+                        Posted By: {{ $post->User->name }} | Posted On: {{ $post->created_at }}
                     </p>
                 </div>
             </div>

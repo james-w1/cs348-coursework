@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SubForum;
 use App\Models\Post;
+use App\Models\User;
 
 class MainController extends Controller
 {
@@ -64,8 +65,8 @@ class MainController extends Controller
      */
     public function show(SubForum $sub_forum)
     {
-        #$sub_forum = SubForum::findOrFail($id);
         $posts = Post::where('sub_forum_id', '=', $sub_forum->id)->paginate(7);
+        #$sub_forum = SubForum::findOrFail($id);
         return view('forum.subForum', ['sub_forum'=>$sub_forum, 'posts'=>$posts]);
     }
 

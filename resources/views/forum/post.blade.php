@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="bg-primary-200 p-2 rounded-md">
+    <div class="p-2 bg-primary-200 rounded-md">
         <p class="text-lg"> {{ $post->title }} </p>
         <p class=""> {{ $post->body }} </p>
         <div class="flex flex-row-reverse">
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="p-2 space-x-2 flex w-full">
+    <div class="pt-2 space-x-2 flex w-full">
         <a class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100" href="{{ route('forum.show', ['sub_forum' => $sub_forum]) }}">back</a>
         @if (Auth::user())
             <div class="">
@@ -27,13 +27,13 @@
         @endif
     </div>
 
-    <div class="p-4 space-y-2">
+    <div class="pl-4 pt-2 space-y-2">
         @foreach($replies as $reply)
             <div class="p-2 bg-primary-200 rounded-md space-y-2">
                 <p>{{ $reply->body }}</p>
                 <div class="flex flex-row-reverse">
                     <p class="text-sm text-primary-500">
-                        Posted By: {{ $repliers[$reply->id]->name }} | Posted On: {{ $reply->created_at }}
+                        Posted By: {{ $reply->User->name }} | Posted On: {{ $reply->created_at }}
                     </p>
                 </div>
             </div>

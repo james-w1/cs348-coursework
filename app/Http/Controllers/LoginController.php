@@ -34,8 +34,6 @@ class LoginController extends Controller
             return redirect()->route('forum.index');
         }
 
-        dd(Auth::attempt($credentials));
-
         return back()->withErrors([
             'name' => 'name failed',
             'password' => 'pass failed'

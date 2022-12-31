@@ -32,6 +32,8 @@ Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile
 
 Route::get('/profile/{user}/settings', [ProfileController::class, 'edit'])->name('profile.settings');
 
+Route::post('/profile/{user}/settings', [ProfileController::class, 'destroy'])->name('profile.delete');
+
 Route::get('/sub-forum/{sub_forum}', [MainController::class, 'show'])->name('forum.show');
 
 Route::post('/sub-forum/{sub_forum}', [MainController::class, 'store'])->name('forum.store');

@@ -7,7 +7,7 @@
 
 @section('content')
 
-<div class="p-2 space-x-2 w-full flex">
+<div class="pb-2 space-x-2 w-full flex">
     <a 
         class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100" 
         href="{{ route('forum.show', ['sub_forum'=>$sub_forum]) }}"

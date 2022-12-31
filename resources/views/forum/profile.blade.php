@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', '/profile/' . $user->name)
+@section('title', '/ profile / ' . $user->name)
 
-@section('header', '/profile/' . $user->name)
+@section('header', '/ profile / ' . $user->name)
 
 @section('content')
-    <div class="p-2 space-x-2 flex w-full">
+    <div class="pb-2 space-x-2 flex w-full">
         <a 
             class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
             href="{{ route('forum.index') }}"
@@ -41,7 +41,13 @@
                                 >
                                     {{ $post->title }}
                                 </a> 
-                                in $subforum->name
+                                in
+                                <a
+                                    class="text-secondary-500 hover:text-black"
+                                    href=""
+                                >
+                                    {{ $post->SubForum->name }}
+                                </a> 
                             </span>
                         </div>
                     </li>
@@ -69,7 +75,13 @@
                                 >
                                     {{ Str::limit($reply->body, 32) }}
                                 </a> 
-                                in $post->name
+                                in
+                                <a
+                                    class="text-secondary-500 hover:text-black"
+                                    href=""
+                                >
+                                    {{ $reply->Post->title }}
+                                </a> 
                             </span>
                         </div>
                     </li>
