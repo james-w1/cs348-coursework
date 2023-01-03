@@ -21,6 +21,8 @@ return new class extends Migration
             $table->longText('body');
             $table->bigInteger('sub_forum_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
+            $table->string('image_name')->nullable();
+            $table->string('image_path')->nullable();
             $table->timestamps();
 
             $table->foreign('sub_forum_id')->references('id')->on('sub_forums')

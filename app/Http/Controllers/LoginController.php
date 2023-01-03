@@ -35,8 +35,8 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'name' => 'name failed',
-            'password' => 'pass failed'
+            'username' => 'username incorrect',
+            'password' => 'password incorrect'
         ]);
     }
 }
