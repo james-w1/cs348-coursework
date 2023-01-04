@@ -71,7 +71,7 @@
                     <div>
                         <a href="{{ Storage::url($post->image_path) }}">
                             <img
-                                class="h-auto w-20 border border-primary-400 rounded-md hover:shadow-md"
+                                class="h-auto w-20 border border-primary-400 rounded-md text-sm overflow-hidden hover:shadow-md"
                                 src="{{ Storage::url($post->image_path) }}"
                                 alt="{{ asset($post->image_name) }}"
                             ></img>

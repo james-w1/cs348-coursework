@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\User;
-use App\Models\SubForum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +21,8 @@ class PostFactory extends Factory
             'title' => Fake()->word(),
             'body' => Fake()->sentence(30),
             'user_id' => User::inRandomOrder()->first()->id,
+            'image_path' => Fake()->image('storage/app/public/images'),
+            'image_name' => Fake()->word() . '.png',
         ];
     }
 }

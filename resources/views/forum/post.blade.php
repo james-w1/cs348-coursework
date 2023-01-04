@@ -30,7 +30,7 @@
             <div class="justify-center flex">
                 <a href="{{ Storage::url($post->image_path) }}" >
                     <img
-                        class="img border border-primary-400 rounded-md h-40 w-auto hover:shadow-md"
+                        class="text-sm overflow-hidden img border border-primary-400 rounded-md w-60 h-auto hover:shadow-md"
                         src="{{ Storage::url($post->image_path) }}"
                         alt="{{ $post->image_name }}"
                     >
