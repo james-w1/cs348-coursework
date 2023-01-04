@@ -32,12 +32,12 @@
         <li 
             @if (Auth::user())
                 @if (Auth::user()->id == $post->user_id)
-                    class="bg-primary-300 p-2 rounded-md"
+                    class="bg-primary-300 rounded-md"
                 @endif
             @endif
-            class="bg-primary-200 p-2 rounded-md"
+            class="bg-primary-200 rounded-md"
         >
-            <div class="flex justify-between text-lg w-full">
+            <div class="px-1 flex justify-between text-lg w-full">
                 <a
                     class="text-secondary-500 hover:text-primary-400" 
                     href="{{ route('post.show', ['sub_forum' => $sub_forum, 'post' => $post]) }}"
@@ -63,16 +63,39 @@
                         @endif
                     @endif
             </div>
-            <div class="text-sm">
-                <p>{{ Str::limit($post->body, 100) }}</p> 
-                <div
-                    class="flex text-primary-500 justify-between w-full"
-                >
-                    <p>{{ $post->reply->count() }} replies</p>
-                    <p class="order-last">
-                        Posted By: {{ $post->User->name }} | Posted On: {{ $post->created_at }}
-                    </p>
+            
+            <div
+                class="w-full space-x-2 pb-1 px-2 flex"
+            >
+                @if ($post->image_path)
+                    <div>
+                        <a href="{{ Storage::url($post->image_path) }}">
+                            <img
+                                class="h-auto w-20 border border-primary-400 rounded-md hover:shadow-md"
+                                src="{{ Storage::url($post->image_path) }}"
+                                alt="{{ asset($post->image_name) }}"
+                            ></img>
+                        </a>
+                    </div>
+                @endif
+
+                <div class="pb-1 text-sm">
+                    <p class="text-sm">{{ Str::limit($post->body, 100) }}</p> 
                 </div>
+            </div>
+
+            <div
+                @if (Auth::user())
+                    @if (Auth::user()->id == $post->user_id)
+                        class="px-1 flex text-sm text-primary-50 justify-between w-full bg-primary-400 rounded-b-md"
+                    @endif
+                @endif
+                class="px-1 flex text-sm text-primary-500 justify-between w-full bg-primary-300 rounded-b-md"
+            >
+                <p>{{ $post->reply->count() }} replies</p>
+                <p class="order-last">
+                    Posted By: {{ $post->User->name }} | Posted On: {{ $post->created_at }}
+                </p>
             </div>
         </li>
     @endforeach

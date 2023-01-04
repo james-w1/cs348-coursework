@@ -42,6 +42,7 @@ class MainController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',
+            'image' => 'image|mimes:jpg,png,gif,jpeg,svg|max:2048',
             'user_id' => 'required',
             'sub_forum_id' => 'required'
         ]);
@@ -49,8 +50,10 @@ class MainController extends Controller
         $p = new Post;
         $p->title = $validatedData['title'];
         $p->body = $validatedData['body'];
+        $p->image_name = $validatedData['image']->getClientOriginalName();
+        $p->image_path = $validatedData['image']->store('images', 'public');
         $p->user_id = $validatedData['user_id'];
-        $p->sub_forum_id = $validatedData['sub_forum_id'];
+        $p->sub_forum_id = $sub_forum->id;
         $p->save();
 
         session()->flash('message', 'Post was created');

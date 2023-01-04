@@ -16,12 +16,27 @@
 @endsection
 
 @section('content')
-    <div class="p-2 bg-primary-200 rounded-md">
-        <p 
-            class="text-lg"
-        >
-            {{ $post->title }} 
-        </p>
+    <div class="p-2 space-y-2 bg-primary-200 rounded-md">
+        <div class="flex w-full">
+            <div>
+                <p 
+                    class="text-lg"
+                >
+                    {{ $post->title }} 
+                </p>
+            </div>
+        </div>
+        @if ( $post->image_path )
+            <div class="justify-center flex">
+                <a href="{{ Storage::url($post->image_path) }}" >
+                    <img
+                        class="img border border-primary-400 rounded-md h-40 w-auto hover:shadow-md"
+                        src="{{ Storage::url($post->image_path) }}"
+                        alt="{{ $post->image_name }}"
+                    >
+                </a>
+            </div>
+        @endif
         <p 
             class="text-base"
         >

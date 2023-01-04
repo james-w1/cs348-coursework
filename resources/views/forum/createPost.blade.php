@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', '/Create Post')
+@section('title', 'Create Post')
 
-@section('header', '/Create Post')
+@section('header', '/ Create Post')
     
 
 @section('content')
@@ -28,26 +28,38 @@
             method="POST" 
             rows="4" 
             action=" {{ route('forum.store', ['sub_forum'=>$sub_forum]) }}"
+            enctype="multipart/form-data"
         >
             @csrf
             <div>
                 <p class="text-primary-600">Title</p>
                 <input 
-                    class="p-1 rounded-md bg-primary-100" 
+                    class="p-1 rounded-md bg-primary-100 w-full"
                     type="text" 
-                    name="title" value="{{ old('title') }}"
+                    name="title" 
+                    value="{{ old('title') }}"
                 >
             </div>
 
             <div>
                 <p class="text-primary-600">Body</p> 
                 <textarea 
-                    class="p-1 rounded-md bg-primary-100 w-full" 
-                    type="text" 
+                    class="p-1 rounded-md bg-primary-100 w-full"
                     name="body" 
                     value="{{ old('body') }}"
+                ></textarea>
+            </div>
+
+            <div
+            >
+                <p class="text-primary-600">Image (optional)</p>
+                <input
+                    class="p-1 rounded-md bg-primary-100 w-full text-primary-600"
+                    type="file"
+                    name="image"
+                    value="{{ old('image') }}"
                 >
-                </textarea>
+                </input>
             </div>
 
             <input 
@@ -55,17 +67,19 @@
                 name="user_id" 
                 value="{{ Auth::user()->id }}"
             >
+            </input>
 
             <input 
                 type="hidden" 
                 name="sub_forum_id" 
                 value="{{ $sub_forum->id }}"
             >
+            </input>
 
             <div>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
-                        <p style="color: red;">{{ $error }}</p>
+                        <p class="text-other-red">{{ $error }}</p>
                     @endforeach
                 @endif
             </div>
