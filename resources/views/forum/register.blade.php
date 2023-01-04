@@ -19,19 +19,19 @@
     <div class="bg-primary-200 flex rounded-md p-2">
         <form class="px-2 space-y-2" method="POST" rows="4" action=" {{ route('register.store') }}">
             @csrf
-            <p>User Name: 
-                <input class="p-1 rounded-md bg-primary-100" type="text" name="user_name">
-            </p>
-            <p>Email:
-                <input class="p-1 rounded-md bg-primary-100" type="text" name="email">
-            </p> 
-            <p>Password: 
-                <input class="p-1 rounded-md bg-primary-100" type="password" name="password" >
-            </p>
+            <p class="text-primary-600">User Name</p>
+            <input class="p-1 rounded-md bg-primary-100" type="text" name="user_name">
+
+            <p class="text-primary-600">Email</p>
+            <input class="p-1 rounded-md bg-primary-100" type="text" name="email">
+
+            <p class="text-primary-600">Password</p>
+            <input class="p-1 rounded-md bg-primary-100" type="password" name="password" >
+
             <div>
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
-                        <p style="color: red;">{{ $error }}</p>
+                        <p class="text-other-red">{{ $error }}</p>
                     @endforeach
                 @endif
             </div>
