@@ -30,9 +30,9 @@
             <div class="justify-center flex">
                 <a href="{{ Storage::url($post->image_path) }}" >
                     <img
-                        class="text-sm overflow-hidden img border border-primary-400 rounded-md w-60 h-auto hover:shadow-md"
+                        class="text-sm overflow-hidden img border border-primary-400 text-center rounded-md w-60 h-auto hover:shadow-md"
                         src="{{ Storage::url($post->image_path) }}"
-                        alt="{{ $post->image_name }}"
+                        alt="Image '{{ $post->image_name }}' missing"
                     >
                 </a>
             </div>
@@ -113,7 +113,7 @@
                     <p 
                         class="text-sm text-primary-500"
                     >
-                        Posted By: {{ $reply->User->name }} | Posted On: {{ $reply->created_at }}
+                        Posted By: <a class="hover:underline hover:text-primary-700" href="{{ route('profile.show', ['user'=>$reply->User]) }}">{{ $reply->User->name }}</a> | Posted On: {{ $reply->created_at }}
                     </p>
                 </div>
             </div>

@@ -13,7 +13,9 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'body'
+        'body',
+        'image_name',
+        'image_path',
     ];
 
     public function subForum() {

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\SubForum;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class MainController extends Controller
 {
@@ -42,7 +45,7 @@ class MainController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'image' => 'image|mimes:jpg,png,gif,jpeg,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpg,png,gif,jpeg,svg|max:2048',
             'user_id' => 'required',
             'sub_forum_id' => 'required'
         ]);
@@ -50,17 +53,14 @@ class MainController extends Controller
         $p = new Post;
         $p->title = $validatedData['title'];
         $p->body = $validatedData['body'];
-
-        if (in_array('image', $validatedData)) {
-            $p->image_name = $validatedData['image']->getClientOriginalName();
-            $p->image_path = $validatedData['image']->store('images', 'public');
-        } else {
-            $p->image_name = null;
-            $p->image_path = null;
-        }
-
         $p->user_id = $validatedData['user_id'];
         $p->sub_forum_id = $sub_forum->id;
+
+        if (array_key_exists('image', $validatedData)) {
+            $p->image_name = $validatedData['image']->getClientOriginalName();
+            $p->image_path = $validatedData['image']->store('images', 'public');
+        }
+
         $p->save();
 
         session()->flash('message', 'Post was created');
@@ -88,7 +88,7 @@ class MainController extends Controller
      */
     public function edit(SubForum $sub_forum, Post $post)
     {
-        //
+        return view('forum.editPost', ['sub_forum'=>$sub_forum, 'post'=>$post]);
     }
 
     /**
@@ -101,7 +101,32 @@ class MainController extends Controller
      */
     public function update(Request $request, SubForum $sub_forum, Post $post)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'image' => 'nullable|image|mimes:jpg,png,gif,jpeg,svg|max:2048',
+            'user_id' => 'required',
+            'sub_forum_id' => 'required'
+        ]);
+
+        if (Auth::user()->id == $validatedData['user_id']) {
+            if (array_key_exists('image', $validatedData)) {
+                $post->update([
+                    'image_name' => $validatedData['image']->getClientOriginalName(),
+                    'image_path' => $validatedData['image']->store('images', 'public'),
+                ]); 
+                unset($validatedData['image']);
+            } else {
+                unset($validatedData['image']);
+            }
+
+            $post->update($validatedData);
+
+            session()->flash('message', 'Post was edited');
+            return redirect()->route('forum.show', ['sub_forum'=>$sub_forum]);
+        } else {
+            return redirect()->route('forum.show', ['sub_forum'=>$sub_forum])->withErrors('Auth', 'Not authorised to edit this.');
+        }
     }
 
     /**

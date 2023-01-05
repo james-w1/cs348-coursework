@@ -52,14 +52,14 @@
                                     action="{{ route('post.delete', ['sub_forum'=>$sub_forum, 'post'=>$post]) }}" 
                                     method="POST"
                                 >
-                                    @csrf
-                                    <button 
+                                    <a 
                                         class="hover:underline hover:text-secondary-500" 
                                         href="{{ route('post.edit', ['post'=>$post, 'sub_forum'=>$sub_forum]) }}"
                                     >
                                         edit
-                                    </button>
+                                    </a>
 
+                                    @csrf
                                     @method('DELETE')
                                     <button 
                                         type="submit" 
@@ -80,9 +80,9 @@
                     <div>
                         <a href="{{ Storage::url($post->image_path) }}">
                             <img
-                                class="h-auto w-20 border border-primary-400 rounded-md text-sm overflow-hidden hover:shadow-md"
+                                class="h-auto w-20 border border-primary-400 rounded-md text-sm overflow-hidden break-words hover:shadow-md"
                                 src="{{ Storage::url($post->image_path) }}"
-                                alt="{{ asset($post->image_name) }}"
+                                alt="{{ $post->image_name }}"
                             ></img>
                         </a>
                     </div>
@@ -103,7 +103,7 @@
             >
                 <p>{{ $post->reply->count() }} replies</p>
                 <p class="order-last">
-                    Posted By: {{ $post->User->name }} | Posted On: {{ $post->created_at }}
+                    Posted By: <a class="hover:underline hover:text-primary-700" href="{{ route('profile.show', ['user'=>$post->User]) }}">{{ $post->User->name }}</a> | Posted On: {{ $post->created_at }}
                 </p>
             </div>
         </li>
