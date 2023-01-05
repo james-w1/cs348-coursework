@@ -42,4 +42,8 @@ Route::get('/sub-forum/{sub_forum}/create', [MainController::class, 'create'])->
 
 Route::get('/sub-forum/{sub_forum}/post/{post}', [PostController::class, 'show'])->name('post.show');
 
+Route::delete('/sub-forum/{sub_forum}/post/{post}/delete', [MainController::class, 'destroy'])->name('post.delete');
+
+Route::get('/sub-forum/{sub_forum}/post/{post}/edit', [MainController::class, 'edit'])->name('post.edit');
+
 Route::post('/sub-forum/{sub_forum}/post/{post}', [PostController::class, 'store'])->name('post.reply');

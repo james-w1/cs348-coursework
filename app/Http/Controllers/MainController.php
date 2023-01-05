@@ -50,8 +50,15 @@ class MainController extends Controller
         $p = new Post;
         $p->title = $validatedData['title'];
         $p->body = $validatedData['body'];
-        $p->image_name = $validatedData['image']->getClientOriginalName();
-        $p->image_path = $validatedData['image']->store('images', 'public');
+
+        if (in_array('image', $validatedData)) {
+            $p->image_name = $validatedData['image']->getClientOriginalName();
+            $p->image_path = $validatedData['image']->store('images', 'public');
+        } else {
+            $p->image_name = null;
+            $p->image_path = null;
+        }
+
         $p->user_id = $validatedData['user_id'];
         $p->sub_forum_id = $sub_forum->id;
         $p->save();
@@ -75,10 +82,11 @@ class MainController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  SubForum $sub_forum
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SubForum $sub_forum, Post $post)
     {
         //
     }
@@ -87,10 +95,11 @@ class MainController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @param  SubForum $sub_forum
+     * @param  Post $post
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SubForum $sub_forum, Post $post)
     {
         //
     }
@@ -98,11 +107,15 @@ class MainController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  SubForum $sub_forum
+     * @param  Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SubForum $sub_forum, Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('forum.show', ['sub_forum'=>$sub_forum])
+            ->with('success', 'post deleted');
     }
 }

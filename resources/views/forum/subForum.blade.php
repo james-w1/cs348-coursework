@@ -46,19 +46,28 @@
                 </a>
                     @if (Auth::user())
                         @if (Auth::user()->id == $post->user_id)
-                            <div class="order-last flex space-x-2 text-sm text-secondary-700">
-                                <a 
-                                    class="hover:underline hover:text-secondary-500" 
-                                    href="#"
+                            <div class="order-last flex">
+                                <form 
+                                    class="space-x-1 text-sm text-secondary-700"
+                                    action="{{ route('post.delete', ['sub_forum'=>$sub_forum, 'post'=>$post]) }}" 
+                                    method="POST"
                                 >
-                                    edit
-                                </a>
-                                <a 
-                                    class="hover:underline hover:text-secondary-500" 
-                                    href="#"
-                                >
-                                    remove
-                                </a>
+                                    @csrf
+                                    <button 
+                                        class="hover:underline hover:text-secondary-500" 
+                                        href="{{ route('post.edit', ['post'=>$post, 'sub_forum'=>$sub_forum]) }}"
+                                    >
+                                        edit
+                                    </button>
+
+                                    @method('DELETE')
+                                    <button 
+                                        type="submit" 
+                                        class="hover:underline hover:text-secondary-500" 
+                                    >
+                                        delete
+                                    </button>
+                                </form>
                             </div>
                         @endif
                     @endif
