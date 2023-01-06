@@ -65,7 +65,7 @@ class PostController extends Controller
      */
     public function show(SubForum $sub_forum, Post $post)
     {
-        $replies = Reply::where('post_id', '=', $post->id)->paginate(7);
+        $replies = Reply::all()->where('post_id', '=', $post->id);
         $op = User::where('id', '=', $post->user_id)->first();
         return view('forum.post', ['sub_forum'=>$sub_forum, 'post'=>$post, 'replies'=>$replies, 'op'=>$op]);
     }

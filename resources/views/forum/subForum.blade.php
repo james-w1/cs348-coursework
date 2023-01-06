@@ -10,21 +10,23 @@
 
 @section('content')
 
-    <div class="space-x-2 w-full pl-2">
-        <a 
-            class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100"
-            href="{{ route('forum.index') }}"
-        >
-            Back
-        </a>
-        @if (Auth::user())
-            <a
-                class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100" 
-                href="{{ route('post.create', ['sub_forum' => $sub_forum]) }}"
+    <div class="flex w-full px-2">
+        <div class="flex-grow space-x-2">
+            <a 
+                class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100"
+                href="{{ route('forum.index') }}"
             >
-                Create Post
+                Back
             </a>
-        @endif
+            @if (Auth::user())
+                <a
+                    class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100" 
+                    href="{{ route('post.create', ['sub_forum' => $sub_forum]) }}"
+                >
+                    Create Post
+                </a>
+            @endif
+        </div>
     </div>
     
     <ul role="list" class="bg-primary-100 p-2 space-y-2">

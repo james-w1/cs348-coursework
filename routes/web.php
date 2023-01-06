@@ -47,5 +47,3 @@ Route::delete('/sub-forum/{sub_forum}/post/{post}/delete', [MainController::clas
 Route::get('/sub-forum/{sub_forum}/post/{post}/edit', [MainController::class, 'edit'])->name('post.edit');
 
 Route::put('/sub-forum/{sub_forum}/post/{post}/edit', [MainController::class, 'update'])->name('post.update');
-
-Route::post('/sub-forum/{sub_forum}/post/{post}', [PostController::class, 'store'])->name('post.reply');

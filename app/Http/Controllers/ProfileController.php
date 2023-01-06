@@ -21,8 +21,8 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        $posts = Post::where('user_id', '=', $user->id)->paginate(7, ['*'], 'post');
-        $replies = Reply::where('user_id', '=', $user->id)->paginate(7, ['*'], 'reply');
+        $posts = Post::where('user_id', '=', $user->id)->get();
+        $replies = Reply::where('user_id', '=', $user->id)->get();
 
         return view('forum.profile', [
             'user'=>$user,

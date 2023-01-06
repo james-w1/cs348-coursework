@@ -16,8 +16,8 @@
 @endsection
 
 @section('content')
-    <div class="p-2 space-y-2 bg-primary-200 rounded-md">
-        <div class="flex w-full">
+    <div class="space-y-2 bg-primary-200 rounded-md">
+        <div class="bg-primary-300 rounded-t-md flex p-1 w-full">
             <div>
                 <p 
                     class="text-lg"
@@ -37,90 +37,28 @@
                 </a>
             </div>
         @endif
-        <p 
-            class="text-base"
-        >
-            {{ $post->body }} 
-        </p>
+        <div class="p-2 space-y-2">
+            @foreach (explode(PHP_EOL, $post->body) as $paragrah)
+                <p>
+                    {{ $paragrah }} 
+                </p>
+            @endforeach
+        </div>
         <div 
-            class="flex flex-row-reverse"
+            class="flex p-1 flex-row-reverse bg-primary-300 rounded-b-md"
         >
             <p
                 class="text-primary-500 text-sm"
             >
-                Posted By: {{ $op->name }} | Posted On: {{ $post->created_at }}
+                Posted By: <a class="hover:underline hover:text-primary-700" href="{{ route('profile.show', ['user'=>$op]) }}">{{ $op->name }}</a> | Posted On: {{ $post->created_at }}
             </p>
         </div>
     </div>
 
-    <div 
-        class="pt-2 space-x-2 flex w-full"
-    >
-        <a 
-            class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100" 
-            href="{{ route('forum.show', ['sub_forum' => $sub_forum]) }}">back
-        </a>
-        @if (Auth::user())
-            <div class="">
-                @livewire('quick-reply', ['sub_forum'=>$sub_forum, 'post' => $post])
-            </div>
-        @endif
-    </div>
 
-    <div class="pl-4 pt-2 space-y-2">
-        @foreach($replies as $reply)
-            <div 
-                @if (Auth::user())
-                    @if (Auth::user()->id == $reply->user_id)
-                        class="p-2 bg-primary-300 rounded-md space-y-2"
-                    @else
-                        class="p-2 bg-primary-200 rounded-md space-y-2"
-                    @endif
-                @else
-                    class="p-2 bg-primary-200 rounded-md space-y-2"
-                @endif
-            >
-                <div 
-                    class="flex justify-between text-lg w-full"
-                >
-                    <p class="text-base">
-                        {{ $reply->body }}
-                    </p>
-                    @if (Auth::user())
-                        @if (Auth::user()->id == $reply->user_id)
-                            <div 
-                                class="order-last flex space-x-2 text-sm text-secondary-700"
-                            >
-                                <a 
-                                    class="hover:underline hover:text-secondary-500" 
-                                    href="#"
-                                >
-                                    edit
-                                </a>
-                                <a 
-                                    class="hover:underline hover:text-secondary-500" 
-                                    href="#"
-                                >
-                                    remove
-                                </a>
-                            </div>
-                        @endif
-                    @endif
-                </div>
-                <div 
-                    class="flex flex-row-reverse"
-                >
-                    <p 
-                        class="text-sm text-primary-500"
-                    >
-                        Posted By: <a class="hover:underline hover:text-primary-700" href="{{ route('profile.show', ['user'=>$reply->User]) }}">{{ $reply->User->name }}</a> | Posted On: {{ $reply->created_at }}
-                    </p>
-                </div>
-            </div>
-        @endforeach
+    <div class="">
+        @livewire('replies', ['sub_forum'=>$sub_forum, 'post'=>$post])
     </div>
-
-    {{ $replies->links() }}
 
     @if ($errors->any())
         @foreach ($errors->all() as $error)

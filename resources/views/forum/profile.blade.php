@@ -8,7 +8,7 @@
     <div class="pb-2 space-x-2 flex w-full">
         <a 
             class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
-            href="{{ route('forum.index') }}"
+            href="{{ url()->previous() }}"
         >
             back
         </a>
@@ -30,35 +30,36 @@
     >
         <p> {{ $user->name }}'s Posts:</p>
         <div class="rounded-md w-full px-20">
-            <ul role="list" class="p-2 space-y-2">
-                @foreach($posts as $post)
-                    <li class="bg-primary-100 p-2 rounded-md">
-                        <div class="w-full flex">
-                            <div class="flex-grow">
-                                <a
-                                    class="text-secondary-500 hover:text-black"
-                                    href=""
-                                >
-                                    {{ $post->title }}
-                                </a> 
-                                in
-                                <a
-                                    class="text-secondary-500 hover:text-black"
-                                    href=""
-                                >
-                                    {{ $post->SubForum->name }}
-                                </a> 
+            <div class="max-h-64 overflow-y-scroll">
+                <ul role="list" class="p-2 space-y-2">
+                    @foreach($posts as $post)
+                        <li class="bg-primary-100 p-2 rounded-md">
+                            <div class="w-full flex">
+                                <div class="flex-grow">
+                                    <a
+                                        class="text-secondary-500 hover:text-black"
+                                        href="{{ route('post.show', ['post'=>$post, 'sub_forum'=>$post->SubForum]) }}"
+                                    >
+                                        {{ $post->title }}
+                                    </a> 
+                                    in
+                                    <a
+                                        class="text-secondary-500 hover:text-black"
+                                        href="{{ route('forum.show', ['sub_forum'=>$post->SubForum]) }}"
+                                    >
+                                        {{ $post->SubForum->name }}
+                                    </a> 
+                                </div>
+                                <div>
+                                    <p class="text-sm text-primary-500">
+                                        Replies: {{ $post->reply->count() }} | {{ $post->created_at }}
+                                    </p>
+                                </div>
                             </div>
-                            <div>
-                                <p class="text-sm text-primary-500">
-                                    Replies: {{ $post->reply->count() }} | {{ $post->created_at }}
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-            {{ $posts->links() }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
     
@@ -69,35 +70,35 @@
     >
         <p> {{ $user->name }}'s Replies:</p>
         <div class="rounded-md w-full px-20">
-            <ul role="list" class="p-2 space-y-2">
-                @foreach($replies as $reply)
-                    <li class="bg-primary-100 p-2 rounded-md">
-                        <div class="flex w-full">
-                            <div class="flex-grow">
-                                <a
-                                    class="text-secondary-500 hover:text-black"
-                                    href=""
-                                >
-                                    {{ Str::limit($reply->body, 32) }}
-                                </a> 
-                                in
-                                <a
-                                    class="text-secondary-500 hover:text-black"
-                                    href=""
-                                >
-                                    {{ $reply->Post->title }}
-                                </a> 
+            <div class="max-h-64 overflow-y-scroll">
+                <ul role="list" class="p-2 space-y-2">
+                    @foreach($replies as $reply)
+                        <li class="bg-primary-100 p-2 rounded-md">
+                            <div class="flex w-full">
+                                <div class="flex-grow">
+                                    <span
+                                        class="text-secondary-500 hover:text-black"
+                                    >
+                                        {{ Str::limit($reply->body, 32) }}
+                                    </span> 
+                                    in
+                                    <a
+                                        class="text-secondary-500 hover:text-black"
+                                        href="{{ route('post.show', ['post'=>$reply->Post, 'sub_forum'=>$reply->Post->SubForum]) }}"
+                                    >
+                                        {{ $reply->Post->title }}
+                                    </a> 
+                                </div>
+                                <div class="">
+                                    <p class="text-sm text-primary-500">
+                                        {{ $reply->created_at }}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="">
-                                <p class="text-sm text-primary-500">
-                                    {{ $reply->created_at }}
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-            {{ $replies->links() }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
     

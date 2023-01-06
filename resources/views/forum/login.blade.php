@@ -21,21 +21,23 @@
             @csrf
             <p class="text-primary-600">User Name</p>
                 <input class="p-1 rounded-md bg-primary-100" type="text" name="name">
-                @error('username')
-                    <p class="text-other-red">{{ $message }}</p>
-                @enderror
 
             <p class="text-primary-600">Password</p>
                 <input class="p-1 rounded-md bg-primary-100" type="password" name="password" >
-                @error('password')
-                    <p class="text-other-red">{{ $message }}</p>
-                @enderror
 
             <p>
                 <input class="p-1" type="checkbox" name="remember" value="1">
                 remember me
             </p>
             <div>
+
+            <div>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <p class="text-other-red">{{ $error }}</p>
+                    @endforeach
+                @endif
+            </div>
 
             </div>
             <div class="flex items-center justify-center w-full">
