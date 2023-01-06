@@ -53,4 +53,9 @@ class User extends Authenticatable
     public function friends() {
         return $this->hasMany(IsFriendsWith::class);
     }
+
+    public function role() {
+        return $this->hasOne(Role::class);
+    }
+
 }

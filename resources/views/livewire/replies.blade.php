@@ -95,16 +95,16 @@
             <div 
                 @if (Auth::user())
                     @if (Auth::user()->id == $reply->user_id)
-                        class="p-2 bg-primary-300 rounded-md space-y-2"
+                        class="bg-primary-300 rounded-md space-y-2"
                     @else
-                        class="p-2 bg-primary-200 rounded-md space-y-2"
+                        class="bg-primary-200 rounded-md space-y-2"
                     @endif
                 @else
-                    class="p-2 bg-primary-200 rounded-md space-y-2"
+                    class="bg-primary-200 rounded-md space-y-2"
                 @endif
             >
                 <div 
-                    class="flex justify-between text-lg w-full"
+                    class="p-2 flex justify-between text-lg w-full"
                 >
                     <p class="text-base">
                         {{ $reply->body }}
@@ -131,13 +131,15 @@
                     @endif
                 </div>
                 <div 
-                    class="flex flex-row-reverse"
+                    class="bg-primary-300 rounded-b-md flex flex-row-reverse"
                 >
-                    <p 
-                        class="text-sm text-primary-500"
-                    >
-                        Posted By: <a class="hover:underline hover:text-primary-700" href="{{ route('profile.show', ['user'=>$reply->User]) }}">{{ $reply->User->name }}</a> | Posted On: {{ $reply->created_at }}
-                    </p>
+                    <div>
+                        <p 
+                            class="text-sm text-primary-500"
+                        >
+                            Posted By: <a class="hover:underline hover:text-primary-700" href="{{ route('profile.show', ['user'=>$reply->User]) }}">{{ $reply->User->name }}</a> | Posted On: {{ $reply->created_at }}
+                        </p>
+                    </div>
                 </div>
             </div>
         @endforeach
