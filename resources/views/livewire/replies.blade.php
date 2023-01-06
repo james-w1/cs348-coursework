@@ -73,10 +73,12 @@
             class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100" 
             href="{{ route('forum.show', ['sub_forum' => $sub_forum]) }}">back
         </a>
-        <button 
-            class="px-4 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
-            wire:click="toggleShow"
-        >Quick Reply</button>
+        @if (Auth::user())
+            <button 
+                class="px-4 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
+                wire:click="toggleShow"
+            >Quick Reply</button>
+        @endif
     </div>
 
     <div>

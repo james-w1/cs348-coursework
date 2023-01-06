@@ -1,8 +1,11 @@
 <div>
-    <button 
-        class="px-4 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
-        wire:click="toggleShow"
-    >Quick Reply</button>
+    @if (Auth::user())
+        {{ dd(Auth::user()); }}
+        <button 
+            class="px-4 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
+            wire:click="toggleShow"
+        >Quick Reply</button>
+    @endif
 
     @if ($show)
     <div class="absolute flex p-2 rounded-md bg-primary-200 outline-primary-900 opacity-85">

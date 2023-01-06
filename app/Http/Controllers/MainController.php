@@ -125,7 +125,8 @@ class MainController extends Controller
             session()->flash('message', 'Post was edited');
             return redirect()->route('forum.show', ['sub_forum'=>$sub_forum]);
         } else {
-            return redirect()->route('forum.show', ['sub_forum'=>$sub_forum])->withErrors('Auth', 'Not authorised to edit this.');
+            return redirect()->route('forum.show', ['sub_forum'=>$sub_forum])
+                ->withErrors('Auth', 'Not authorised to edit this.');
         }
     }
 

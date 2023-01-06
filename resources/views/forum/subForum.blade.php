@@ -18,14 +18,12 @@
             >
                 Back
             </a>
-            @if (Auth::user())
                 <a
                     class="rounded-md bg-primary-200 px-2 hover:bg-secondary-300 hover:text-primary-100" 
                     href="{{ route('post.create', ['sub_forum' => $sub_forum]) }}"
                 >
                     Create Post
                 </a>
-            @endif
         </div>
     </div>
     
