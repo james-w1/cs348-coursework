@@ -4,7 +4,7 @@
 This is a simple forum-like website made using the Laravel framework for my CS348 Coursework. It has basic forum features such as user accounts, posts and replies.
 ### ToDo:
 - [ ] Roles
-- [ ] Refactor replies to all be in livewire
+- [x] Refactor replies to all be in livewire
 - [ ] Edit profile 
 - [ ] Notifications
 
