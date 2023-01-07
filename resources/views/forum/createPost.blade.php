@@ -46,8 +46,7 @@
                 <textarea 
                     class="p-1 rounded-md bg-primary-100 w-full"
                     name="body" 
-                    value="{{ old('body') }}"
-                ></textarea>
+                >{{ old('body') }}</textarea>
             </div>
 
             <div
