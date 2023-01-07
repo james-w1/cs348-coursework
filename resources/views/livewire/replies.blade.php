@@ -110,7 +110,7 @@
                         {{ $reply->body }}
                     </p>
                     @if (Auth::user())
-                        @if (Auth::user()->id == $reply->user_id)
+                        @if (Auth::user()->id == $reply->user_id or Auth::user()->can('delete_posts'))
                             <div 
                                 class="order-last flex space-x-2 text-sm text-secondary-700"
                             >
@@ -131,7 +131,7 @@
                     @endif
                 </div>
                 <div 
-                    class="bg-primary-300 rounded-b-md flex flex-row-reverse"
+                    class="pr-1 bg-primary-300 rounded-b-md flex flex-row-reverse"
                 >
                     <div>
                         <p 

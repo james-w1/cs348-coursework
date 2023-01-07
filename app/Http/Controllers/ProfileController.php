@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IsFriendsWith;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
@@ -23,11 +24,13 @@ class ProfileController extends Controller
     {
         $posts = Post::where('user_id', '=', $user->id)->get();
         $replies = Reply::where('user_id', '=', $user->id)->get();
+        $following = $user->following;
 
         return view('forum.profile', [
             'user'=>$user,
             'posts'=>$posts,
             'replies'=>$replies,
+            'following'=>$following,
         ]);
     }
 
@@ -40,6 +43,20 @@ class ProfileController extends Controller
     public function edit(User $user)
     {
         return view('forum.profileSettings', ['user'=>$user]);
+    }
+
+    public function makeMod(User $user)
+    {
+        $user->update(['role_id'=>2]);
+
+        $posts = Post::where('user_id', '=', $user->id)->get();
+        $replies = Reply::where('user_id', '=', $user->id)->get();
+
+        return view('forum.profile', [
+            'user'=>$user,
+            'posts'=>$posts,
+            'replies'=>$replies,
+        ]);
     }
 
     /**

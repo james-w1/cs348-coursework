@@ -37,6 +37,7 @@ class RegisterController extends Controller
         $u->name = $validatedData['user_name'];
         $u->email = $validatedData['email'];
         $u->password = Hash::make($validatedData['password']);
+        $u->role_id = 3;
         $u->save();
 
         Auth::login($u);

@@ -17,5 +17,7 @@ class Logout extends Component
         Session::flush();
 
         Auth::logout();
+
+        return redirect()->route('forum.index');
     }
 }

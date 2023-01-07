@@ -22,6 +22,14 @@
                 </a>
                 <livewire:logout />
         @endif
+        @can('mod_users')
+                <a 
+                    class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100"
+                    href="{{ route('profile.make-mod', ['user'=>$user]) }}"
+                >
+                    make modertor
+                </a>
+        @endcan
     @endif
     </div>
 
@@ -37,14 +45,14 @@
                             <div class="w-full flex">
                                 <div class="flex-grow">
                                     <a
-                                        class="text-secondary-500 hover:text-black"
+                                        class="text-secondary-500 hover:text-primary-800"
                                         href="{{ route('post.show', ['post'=>$post, 'sub_forum'=>$post->SubForum]) }}"
                                     >
                                         {{ $post->title }}
                                     </a> 
                                     in
                                     <a
-                                        class="text-secondary-500 hover:text-black"
+                                        class="text-secondary-500 hover:text-primary-800"
                                         href="{{ route('forum.show', ['sub_forum'=>$post->SubForum]) }}"
                                     >
                                         {{ $post->SubForum->name }}
@@ -77,13 +85,13 @@
                             <div class="flex w-full">
                                 <div class="flex-grow">
                                     <span
-                                        class="text-secondary-500 hover:text-black"
+                                        class="text-primary-500"
                                     >
                                         {{ Str::limit($reply->body, 32) }}
                                     </span> 
                                     in
                                     <a
-                                        class="text-secondary-500 hover:text-black"
+                                        class="text-secondary-500 hover:text-primary-800"
                                         href="{{ route('post.show', ['post'=>$reply->Post, 'sub_forum'=>$reply->Post->SubForum]) }}"
                                     >
                                         {{ $reply->Post->title }}
@@ -102,4 +110,32 @@
         </div>
     </div>
     
+    @if ($following->count())
+        <br>
+
+        <div 
+            class="p-1 flex flex-col items-center justify-center bg-primary-200 rounded-md overflow-y-scroll"
+        >
+            <p> {{ $user->name }}'s Friends:</p>
+            <div class="rounded-md w-full px-20">
+                <div class="max-h-64 overflow-y-scroll">
+                    <ul role="list" class="p-2 space-y-2">
+                        @foreach($following as $friend)
+                            <li class="bg-primary-100 p-2 rounded-md">
+                                <div class="flex w-full">
+                                    <a
+                                        class="text-secondary-500 hover:text-primary-800"
+                                        href="{{ route('profile.show', ['user'=>$friend]) }}"
+                                    >
+                                        {{ $friend->name}}
+                                    </a> 
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endif
+
 @endsection

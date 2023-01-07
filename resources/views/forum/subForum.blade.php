@@ -45,7 +45,7 @@
                     {{ $post->title }}
                 </a>
                     @if (Auth::user())
-                        @if (Auth::user()->id == $post->user_id)
+                        @if (Auth::user()->id == $post->user_id or Auth::user()->can('delete_posts'))
                             <div class="order-last flex">
                                 <form 
                                     class="space-x-1 text-sm text-secondary-700"

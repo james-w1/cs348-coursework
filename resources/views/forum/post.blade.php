@@ -26,7 +26,7 @@
                 </p>
             </div>
             @if (Auth::user())
-                @if (Auth::user()->id == $post->user_id)
+                @if (Auth::user()->id == $post->user_id or Auth::user()->can('delete_posts'))
                     <div class="order-last">
                         <form 
                             class="space-x-1 text-sm text-secondary-700"
@@ -89,7 +89,7 @@
 
     @if ($errors->any())
         @foreach ($errors->all() as $error)
-            <p style="color: red;">{{ $error }}</p>
+            <p class="text-other-red">{{ $error }}</p>
         @endforeach
     @endif
 

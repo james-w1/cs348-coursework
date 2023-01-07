@@ -33,6 +33,9 @@ Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile
 Route::get('/profile/{user}/settings', [ProfileController::class, 'edit'])->middleware('auth')
     ->name('profile.settings');
 
+Route::get('/profile/{user}/mod', [ProfileController::class, 'makeMod'])->middleware('can:mod_users')
+    ->name('profile.make-mod');
+
 Route::post('/profile/{user}/delete', [ProfileController::class, 'destroy'])->middleware('auth')
     ->name('profile.delete');
 

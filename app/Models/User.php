@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -50,12 +51,23 @@ class User extends Authenticatable
         return $this->hasMany(Reply::class);
     }
 
-    public function friends() {
-        return $this->hasMany(IsFriendsWith::class);
+    public function following() {
+        return $this->belongsToMany(User::class, 'is_friends_withs', 'user_id', 'friend_id');
+    }
+
+    public function followed() {
+        return $this->belongsToMany(User::class, 'is_friends_withs', 'user_id', 'friend_id');
     }
 
     public function role() {
         return $this->hasOne(Role::class);
     }
 
+    public function hasModPerms() {
+        return $this->role_id <= 2;
+    }
+
+    public function hasAdminPerms() {
+        return $this->role_id == 1;
+    }
 }
