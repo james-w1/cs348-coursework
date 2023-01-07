@@ -21,6 +21,34 @@
                     settings
                 </a>
                 <livewire:logout />
+        @else
+            @if (!(Auth::user()->following->contains($user)))
+                <form 
+                    method="POST" 
+                    action=" {{ route('profile.follow', ['user'=>$user]) }}"
+                    enctype="multipart/form-data"
+                >
+                    @csrf
+                    <input 
+                        class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100" 
+                        type="submit" 
+                        value="follow"
+                    >
+                    </input>
+                </form>
+            @else
+                 <form 
+                    method="POST" 
+                    action=" {{ route('profile.unfollow', ['user'=>$user]) }}"
+                    enctype="multipart/form-data"
+                >
+                    @csrf
+                    @method('DELETE')
+                    <button 
+                        class="px-2 rounded-md bg-primary-200 hover:bg-secondary-300 hover:text-primary-100" 
+                    >unfollow</button>
+                </form>
+            @endif
         @endif
         @can('mod_users')
                 <a 

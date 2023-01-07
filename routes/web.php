@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FollowingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
@@ -38,6 +39,12 @@ Route::get('/profile/{user}/mod', [ProfileController::class, 'makeMod'])->middle
 
 Route::post('/profile/{user}/delete', [ProfileController::class, 'destroy'])->middleware('auth')
     ->name('profile.delete');
+
+Route::post('/profile/{user}/follow', [FollowingController::class, 'store'])->middleware('auth')
+    ->name('profile.follow');
+
+Route::delete('/profile/{user}/unfollow', [FollowingController::class, 'destroy'])->middleware('auth')
+    ->name('profile.unfollow');
 
 Route::get('/sub-forum/{sub_forum}', [MainController::class, 'show'])->name('forum.show');
 

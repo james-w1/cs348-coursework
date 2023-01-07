@@ -3,8 +3,8 @@
 ### What is This?
 This is a simple forum-like website made using the Laravel framework for my CS348 Coursework. It has basic forum features such as user accounts, posts and replies.
 ### ToDo:
-- [ ] Roles
+- [x] Roles
 - [x] Refactor replies to all be in livewire
-- [ ] Edit profile 
+- [x] Edit profile 
 - [ ] Notifications
 
