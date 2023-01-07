@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Process\Process;
 use App\Models\SubForum;
+use App\Models\User;
+use App\Models\Reply;
+use App\Models\StickyPost;
 
 class Post extends Model
 {
@@ -20,6 +23,10 @@ class Post extends Model
 
     public function subForum() {
         return $this->belongsTo(SubForum::class);
+    }
+
+    public function stickyPost() {
+        return $this->belongsTo(StickyPost::class);
     }
 
     public function user() {

@@ -17,4 +17,8 @@ class SubForum extends Model
     public function posts() {
         return $this->hasMany(Post::class);
     }
+
+    public function sticky_post() {
+        return $this->hasOne(StickyPost::class);
+    }
 }

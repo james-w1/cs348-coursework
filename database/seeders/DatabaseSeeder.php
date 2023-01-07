@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PostsSeeder::class);
         $this->call(ReplySeeder::class);
         $this->call(IsFriendsWithSeeder::class);
+        $this->call(StickySeeder::class);
     }
 }

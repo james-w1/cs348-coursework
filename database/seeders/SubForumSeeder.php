@@ -17,9 +17,9 @@ class SubForumSeeder extends Seeder
      */
     public function run()
     {
-        SubForum::factory()->count(10)->has(
-            Post::factory()->count(8)->has(
-                Reply::factory()->count(12)
-            ))->create();
+        SubForum::factory()->count(10)
+            ->has(Post::factory()->count(14)
+                ->has(Reply::factory()->count(14))
+            )->create();
     }
 }

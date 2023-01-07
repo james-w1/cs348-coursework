@@ -76,7 +76,8 @@ class MainController extends Controller
     public function show(SubForum $sub_forum)
     {
         $posts = Post::where('sub_forum_id', '=', $sub_forum->id)->orderBy('created_at', 'desc')->paginate(7);
-        return view('forum.subForum', ['sub_forum'=>$sub_forum, 'posts'=>$posts]);
+        $sticky = Post::where('id', '=', $sub_forum->sticky_post->post_id)->first();
+        return view('forum.subForum', ['sub_forum'=>$sub_forum, 'posts'=>$posts, 'sticky_post'=>$sticky]);
     }
 
     /**
